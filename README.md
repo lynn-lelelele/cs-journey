@@ -20,4 +20,5 @@ cs-journey/
 
 - [x] 2026.07.29 — Mario 金字塔（for 循环嵌套）
 - [x] 2026.07.31 — Cash 找零（除法 + 取余）
+- [x] 2026.08.02 — Readability 阅读难度（字符串遍历、isalpha、float 转换）
 - [ ] 继续中...

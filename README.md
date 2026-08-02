@@ -7,11 +7,18 @@
 ```
 cs-journey/
 ├── README.md
-├── 2026-07/          ← 每月一个文件夹
-│   ├── 07-29-mario/  ← 每天一个项目
-│   └── 07-31-cash/
+├── push.bat              ← 一键推送脚本
+├── 2026-07/
+│   ├── 07-29-mario/      ← 双金字塔（for 嵌套）
+│   │   ├── mario.c
+│   │   └── README.md
+│   └── 07-31-cash/       ← 硬币找零（除法取余）
+│       ├── cash.c
+│       └── README.md
 └── 2026-08/
-    └── ...
+    └── 08-02-readability/ ← 阅读难度（字符串+float）
+        ├── readability.c
+        └── README.md
 ```
 
 每个文件夹里有一个 `README.md` 记录：学到了什么、踩了什么坑、下次怎么改进。

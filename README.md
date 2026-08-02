@@ -29,3 +29,20 @@ cs-journey/
 - [x] 2026.07.31 — Cash 找零（除法 + 取余）
 - [x] 2026.08.02 — Readability 阅读难度（字符串遍历、isalpha、float 转换）
 - [ ] 继续中...
+
+## CS50 路线图
+
+| Week | 主题 | PSet | 状态 |
+|------|------|------|------|
+| 1 | C 语言基础 | Mario / Cash | ✅ |
+| 2 | 数组 | Readability / Caesar | 🔄 Readability 完成 |
+| 3 | 算法 | Plurality / Runoff | ⬜ |
+| 4 | 内存 & 指针 | Filter / Recover | ⬜ |
+| 5 | 数据结构 | Speller | ⬜ |
+| 6 | Python | 过渡周 | ⬜ |
+| 7 | SQL | Songs / Movies | ⬜ |
+| 8 | Web (HTML/CSS/JS) | Homepage | ⬜ |
+| 9 | Flask | Finance | ⬜ |
+| 10 | 最终项目 | 自选题 | ⬜ |
+
+> 按自己的节奏来，不赶进度，搞懂每一行代码。

@@ -1,4 +1,4 @@
-# CS Journey
+﻿# CS Journey
 
 > 从零开始的学习记录。每道题、每个项目、每次踩坑。持续更新。
 
@@ -16,8 +16,11 @@ cs-journey/
 │       ├── cash.c
 │       └── README.md
 └── 2026-08/
-    └── 08-02-readability/ ← 阅读难度（字符串+float）
-        ├── readability.c
+    ├── 08-02-readability/ ← 阅读难度（字符串+float）
+    │   ├── readability.c
+    │   └── README.md
+    └── 08-03-caesar/     ← 凯撒密码（argc/argv）
+        ├── caesar.c
         └── README.md
 ```
 
@@ -28,6 +31,7 @@ cs-journey/
 - [x] 2026.07.29 — Mario 金字塔（for 循环嵌套）
 - [x] 2026.07.31 — Cash 找零（除法 + 取余）
 - [x] 2026.08.02 — Readability 阅读难度（字符串遍历、isalpha、float 转换）
+- [x] 2026.08.03 — Caesar 凯撒密码（argc/argv、atoi、ASCII、% 循环移位）
 - [ ] 继续中...
 
 ## CS50 路线图
@@ -35,7 +39,7 @@ cs-journey/
 | Week | 主题 | PSet | 状态 |
 |------|------|------|------|
 | 1 | C 语言基础 | Mario / Cash | ✅ |
-| 2 | 数组 | Readability / Caesar | 🔄 Readability 完成 |
+| 2 | 数组 | Readability / Caesar | 🔧 全部完成 |
 | 3 | 算法 | Plurality / Runoff | ⬜ |
 | 4 | 内存 & 指针 | Filter / Recover | ⬜ |
 | 5 | 数据结构 | Speller | ⬜ |

@@ -1,6 +1,8 @@
-﻿# Plurality · 2026.08.04
+﻿# Plurality · 2026.08.04-08.11
 
 CS50 Problem Set 3：简单投票机。命令行传候选人，选民投票，票最多者赢。
+
+## 状态：✅ check50 满分通过（2026.08.11）
 
 ## 运行效果
 
@@ -59,53 +61,21 @@ void print_winner(void)
 }
 ```
 
-## 逐行语法讲解
+## 知识点
 
-### for 循环三件套
+- for 循环三件套：起点 / 条件 / 每轮结束
+- strcmp(a, b) == 0 判断字符串相等（不能直接 ==）
+- return 立即结束函数
+- 找最大值套路：max = 0 → 遍历比较 → 更新
+- 并列：打印所有 == max 的人
 
-```c
-for (int i = 0; i < candidate_count; i++)
-    ①起点       ②条件          ③每轮结束
-```
-- `int i = 0` → i 从 0 开始
-- `i < candidate_count` → i 没到最后一个就继续
-- `i++` → 每轮结束 i + 1
-- 循环体用 `{ }` 包起来
+## 踩过的坑
 
-### strcmp 比较字符串
+- print_winner 开头重复写了两遍
+- 忘了第二个循环（只找 max 没打印）
+- get50 不可用 → 手动建文件
+- check50 要先在 submit.cs50.io 授权
 
-```c
-strcmp(candidates[i].name, name) == 0
-```
-- 相等返回 0 → 用 `== 0` 判断"一样"
-- 字符串**不能**用 `==` 直接比（比的是地址）
+## 验证
 
-### return 两种用法
-
-```c
-return true;    // 1. 函数返回值：告诉调用者"成功了"
-return false;   // 2. 也是返回值："没找到"
-```
-- 函数一 return 就**立即结束**，后面的代码不跑了
-- `vote` 返回 bool（true/false），main 里 `if (!vote(name))` 判断是否无效票
-
-### 找最大值套路（重要！）
-
-```c
-int max = 0;                    // 1. 先设一个"基准"
-for (...)                       // 2. 遍历
-    if (candidates[i].votes > max)  // 3. 发现更大的
-        max = candidates[i].votes;  // 4. 更新
-```
-先找 max 是多少，再扫一遍打印 == max 的——这样**并列冠军**也能输出。
-
-## 踩了什么坑
-
-- `void print_winner(void) {` 开头重复写了两遍 → 编译报错
-- 第一遍只写了找 max，忘了第二个循环打印 → 函数不输出
-- 写完后没有验证并列情况
-
-## 下次改进
-
-- 写完函数先自查：循环是否完整、有没有漏掉输出
-- 用 check50 验证：`check50 cs50/problems/2024/x/plurality`
+- check50 cs50/problems/2024/x/plurality → 14/14 全绿

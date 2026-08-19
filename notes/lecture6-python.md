@@ -1,6 +1,6 @@
 ﻿# CS50 Lecture 6 · Python × Kaggle 结合课 · 家教笔记
 
-> 2026.08.18 开始 · 本地 Python 3.14 环境（不用联网！）
+> 2026.08.18-19 开始 · 本地 Python 3.14 环境（不用联网！）
 
 ## 目标
 
@@ -95,7 +95,6 @@ def average(numbers):
     return total / len(numbers)
 
 print(average(ratings))   # 复用！
-print(average(other))
 ```
 
 | C | Python |
@@ -103,9 +102,11 @@ print(average(other))
 | `bool vote(string name)` | `def vote(name):`（不写类型） |
 | `{}` 包代码 | 缩进 4 空格 |
 
-## 第 6 课：pandas（进行中 ⏳）
+## 第 6 课：pandas 基础 ✅
 
 pandas 3.0.5 已装。DataFrame = 一整张 Excel 表。
+
+### 创建表格
 
 ```python
 import pandas as pd
@@ -115,11 +116,45 @@ movies = pd.DataFrame({
     "rating": [8.8, 7.9],
     "year":   [2010, 1997]
 })
+```
 
-print(movies)              # 打印整张表
-print(movies["title"])     # 只看一列
+### 核心操作（Kaggle 基本功）
+
+```python
+movies["title"]                      # 选一列
+movies[["title", "year"]]            # 选多列（双括号 = 传列表）
+movies[movies["rating"] >= 8.0]      # 筛选：评分 >= 8 的行
+movies.head(2)                       # 只看前 2 行
+```
+
+### 读 CSV 文件（Kaggle 数据入口）⭐
+
+```python
+movies = pd.read_csv("C:/Users/19918/Desktop/movies.csv")
+print(movies)                        # 整张表
+print(movies["genre"].value_counts()) # 统计每种类型数量
+```
+
+### 双括号原理
+
+```python
+movies[["title", "year"]]  # 里面的括号 = 列名列表，外面 = 访问 movies
+movies["title"]            # 单列用单括号
+```
+
+### 筛选原理
+
+```python
+movies[movies["rating"] >= 8.0]
+# ① movies["rating"] >= 8.0 → 一串 True/False
+# ② movies[True/False列表] → 只保留 True 的行
 ```
 
 ## 本地文件（桌面）
 
-- hello.py / ratings.py / avg.py / movie.py / movies.py / average.py / pandas1.py / pandas2.py
+hello.py / ratings.py / avg.py / movie.py / movies.py / average.py / pandas1.py / pandas2.py / pandas3.py / movies.csv
+
+## 进度
+
+- CS50：L1-L5 ✅，L6 Python 进行中
+- Kaggle：Python 基础 ✅ → pandas 基础 ✅ → 下一步：排序/分组/缺失值 → sklearn → 打比赛

@@ -1,79 +1,54 @@
-﻿# House Prices · 阶段 3.1 基线 · 家教笔记
+﻿# House Prices · 阶段 3 笔记
 
-> 2026.08.21 · Kaggle 房价预测（回归赛）· 第一个基线 ✅
+> 2026.08.21 · Kaggle 房价预测（回归赛）
 
-## 目标
+## 阶段 3.1：基线 ✅
 
-预测 1459 套房子的成交价（回归任务，不是分类）。
+- 全流程：读数据 → 填缺失 → get_dummies → 随机森林回归 → 提交
+- 基线分数：**0.14758**
+- 踩坑：Kaggle 要先 Join Competition；pandas 3.x 用 is_numeric_dtype 判断列类型
 
-## 数据
+## 阶段 3.2：特征工程 ✅
 
-- train.csv：1460 行 × 81 列（80 特征 + SalePrice 房价）
-- test.csv：1459 行 × 80 列（没房价，要预测）
-- data_description.txt：79 个特征说明
-- sample_submission.csv：提交模板
+### 判断逻辑（3 问）
 
-## 完整流程（5 步）
+1. **同一件事被拆开存？** → 加（1楼+2楼+地下室 = 总面积）
+2. **时间点相减有意义？** → 减（卖房年 - 建房年 = 房龄）
+3. **组合起来信号更强？** → 乘（质量×面积 = 又大又好）
+
+### 用到的 3 个新特征
 
 ```python
-import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
-
-# ① 读数据 + 分 X/y
-train = pd.read_csv("train.csv")
-test = pd.read_csv("test.csv")
-y = train["SalePrice"]                 # 标签：房价
-X = train.drop(columns=["SalePrice"])  # 特征：去掉房价
-
-# ② 拼接 + 统一填缺失（保证训练/测试处理一致）
-all_data = pd.concat([X, test], ignore_index=True)
-for col in all_data.columns:
-    if pd.api.types.is_numeric_dtype(all_data[col]):
-        all_data[col] = all_data[col].fillna(all_data[col].median())  # 数值填中位数
-    else:
-        all_data[col] = all_data[col].fillna("None")                  # 文字填 None
-
-# ③ 文字转数字（0/1 开关）
-all_data = pd.get_dummies(all_data)
-
-# ④ 拆回训练/测试
-X = all_data[:len(train)]
-test_final = all_data[len(train):]
-
-# ⑤ 训练 + 预测
-model = RandomForestRegressor(n_estimators=100, random_state=42)
-model.fit(X, y)
-pred = model.predict(test_final)
+for df in [X, test]:
+    df["TotalSF"] = df["1stFlrSF"] + df["2ndFlrSF"] + df["TotalBsmtSF"]
+    df["HouseAge"] = df["YrSold"] - df["YearBuilt"]
+    df["QualSF"] = df["OverallQual"] * df["TotalSF"]
 ```
 
-## 关键知识点
+### 让模型自动学（关键决策）
 
-- **Regressor vs Classifier**：预测数字用 Regressor，预测 0/1 用 Classifier
-- **pd.concat + ignore_index=True**：拼接时重新编号，避免行号重复
-- **fillna 只填空**：有数据的地方不动
-- **get_dummies**：文字 → 多列 0/1（哪种哪列=1），模型才能做数学运算
-- **缺失 ≠ 坏事**：PoolQC 缺失 = 没泳池（填 "None" 表示没有）
-- **is_numeric_dtype 判断**：pandas 3.x 判断列类型要用它，不能用 dtype == "object"
+- 浴室列（FullBath/HalfBath/BsmtFullBath/BsmtHalfBath）**不人工合并**
+- 让随机森林自己学权重 → 比人工猜权重更好！
 
-## 成绩
+### 结果对比（同口径本地评估）
 
-- Kaggle 提交分数：**0.14758**（RMSE，越低越好）
-- 水平：中等偏上基线（顶级 ~0.11，新手常见 0.16+）
+| 版本 | 分数 |
+|------|------|
+| 无特征工程 | 0.15498 |
+| 4 特征（人工浴室权重） | 0.15142 |
+| 3 特征（浴室让模型学） | 0.15001 |
 
-## 遇到的问题与坑
+### Kaggle 真实分数
 
-1. **Kaggle 下载**：要先 Join Competition（接受规则）才能下载数据；Download All 会弹 kagglehub 代码框，直接用网页下载按钮即可
-2. **pandas 3.x 类型判断坑**：`dtype == "object"` 对文字列失效 → 报 `Cannot perform reduction 'median' with string dtype` → 改用 `pd.api.types.is_numeric_dtype()`
-3. **首次 import sklearn 慢**：第一次要初始化，超时正常，第二次就快
+- 基线：0.14758
+- 特征工程版：**0.14221** ✅ 提升 0.005
 
-## 下一步（冲分）
+### 相乘特征逻辑
 
-- 特征工程：总面积 = 各面积之和、合并稀有类别
-- 调参：n_estimators、max_depth
-- 换模型：XGBoost
+- 乘 = 捕捉协同效应（两个因素同时大 → 效果翻倍）
+- 例：质量×面积、曝光×点击率、价格×折扣
 
-## 状态
+## 阶段 3.3：调参 / XGBoost（下一步）
 
-- [x] 3.1 读数据 + 基线提交（0.14758）
-- [ ] 3.2 特征工程
-- [ ] 3.3 调参冲分
+- [ ] 调参：n_estimators、max_depth
+- [ ] XGBoost（比赛神器）

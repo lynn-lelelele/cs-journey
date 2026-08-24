@@ -1,6 +1,6 @@
 # CS50 Lecture 7 · SQL 入门 · 家教笔记
 
-> 2026.08.23 开始 · 第 1-2 小点
+> 2026.08.23-24 · L7 学习中
 
 ## 数据库是啥
 
@@ -33,40 +33,92 @@ FROM 表     -- 从哪张表
 WHERE 条件  -- 再筛选
 ```
 
-## pandas 四个操作复习
+## SQL 基础命令（5 个，已掌握）
 
-### 1. 筛选
+```sql
+CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, score REAL);  -- 建表
+INSERT INTO students (id, name, age, score) VALUES (1, 'Alice', 20, 88.5); -- 插入
+SELECT name, score FROM students WHERE age < 20;   -- 查 + 筛
+SELECT name, score FROM students ORDER BY score DESC;  -- 排序（DESC降序 ASC升序）
+SELECT COUNT(*), AVG(score) FROM students;          -- 统计
+SELECT class, AVG(score) FROM scores GROUP BY class; -- 分组
+```
+
+### 类型 4 种
+
+`INTEGER`（整数）`TEXT`（文字）`REAL`（小数）`BLOB`（其他）
+
+### 注意
+
+- 文字加单引号 `'Alice'`，数字不用
+- 中文符号坑：`'Alice“` 要用英文 `'`；`<` 不是 `《`
+
+## sqlite3 五步（Python 跑 SQL）
 
 ```python
-df[df["age"] > 18]    # df[条件] → True/False 选行
+import sqlite3
+conn = sqlite3.connect("test.db")   # 连接（没有自动创建）
+cursor = conn.cursor()              # 拿执行器
+cursor.execute("SQL语句")           # 执行
+rows = cursor.fetchall()            # 查询拿结果
+conn.commit()                       # 插入/改后保存（空括号！）
+conn.close()                        # 关闭
 ```
 
-### 2. 选列
+## JOIN（连接两张表）⭐ 2026.08.24
 
-```python
-df["name"]              # 一列
-df[["name", "age"]]     # 多列（双括号！）
-```
+### 为什么需要
 
-### 3. 排序
-
-```python
-df.sort_values("age")                  # 默认升序
-df.sort_values("age", ascending=False) # 降序
-```
-
-### 4. 分组统计
-
-```python
-df.groupby("class")["score"].mean()
-# ① 按班级分组 ② 看score列 ③ 算平均
-```
-
-## 记忆口诀
+数据分散在多张表，要按"钥匙"拼起来：
 
 ```
-df[条件]      → WHERE
-df["列"]      → SELECT 列
-sort_values   → ORDER BY
-groupby+mean  → GROUP BY + AVG
+students：                          classes：
+  id  name  class_id                 id  class_name
+  1   Alice  1                       1   A班
+  2   Bob    2                       2   B班
 ```
+
+### 基本语法（内连接）
+
+```sql
+SELECT students.name, classes.class_name
+FROM students
+JOIN classes ON students.class_id = classes.id;
+```
+
+- `ON` 后面 = 连接条件（钥匙）
+- 结果：两表都匹配的行
+
+### LEFT JOIN（左表全保留）
+
+```sql
+SELECT students.name, classes.class_name
+FROM students LEFT JOIN classes ON students.class_id = classes.id;
+```
+
+- 左表（FROM 后面）每一行都出现
+- 右表没匹配的填 NULL
+
+### ⭐ 钥匙概念（最大的坑）
+
+```
+✅ ON students.class_id = classes.id   （学生的班级号 = 班级的编号）
+❌ ON students.id = classes.id         （学生号 ≠ 班级号，碰巧而已）
+```
+
+- 学生 id（学号）和班级 id（班号）是两个不同的东西
+- 连接条件必须用**真正有对应关系**的字段
+
+### 谁在左边谁全保留
+
+| 需求 | 写法 |
+|------|------|
+| 所有学生（含没班级的） | `FROM students LEFT JOIN classes` |
+| 所有班级（含没学生的） | `FROM classes LEFT JOIN students` |
+
+## 进度
+
+- [x] 数据库概念 + SQL vs pandas
+- [x] 基础 5 命令 + sqlite3
+- [x] JOIN 基本 + LEFT JOIN + 钥匙
+- [ ] JOIN 实战练习 / L7 收尾

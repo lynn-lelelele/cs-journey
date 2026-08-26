@@ -42,6 +42,8 @@ cs-journey/
 - [x] 2026.08.18 — L6 Python（语法 + pandas + numpy）
 - [x] 2026.08.19 — PSet 6 Python（Mario/Cash）
 - [x] 2026.08.19 — ML 入门（sklearn 五步 + 决策树）✅ Titanic 79.3%
+- [x] 2026.08.24 — L7 SQL（JOIN / LEFT JOIN）+ LeetCode Two Sum
+- [x] 2026.08.25 — S6E8 手机成瘾预测 **0.97082**（74 模型 OOF 堆叠）
 - [ ] 继续中...
 
 ## CS50 路线图
@@ -54,7 +56,7 @@ cs-journey/
 | 4 | 内存 & 指针 | Filter / Recover | 🔧 Filter 思路学完 |
 | 5 | 数据结构 | Speller | ✅ 课学完 |
 | 6 | Python | PSet 6 | ✅ 学完 + 题做完 |
-| 7 | SQL | Songs / Movies | ⬜ 下一站 |
+| 7 | SQL | Songs / Movies | ✅ 学完 SQL |
 | 8 | Web (HTML/CSS/JS) | Homepage | ⬜ |
 | 9 | Flask | Finance | ⬜ |
 | 10 | 最终项目 | 自选题 | ⬜ |

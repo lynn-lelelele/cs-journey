@@ -252,3 +252,54 @@
 
 ### 今日完整成品
 （见桌面 index.html：青色背景 + 技能列表 + 本地头像 + 变黄按钮 + 白天/黑夜切换 + 紫色标题）
+
+
+---
+
+## 9. Homepage 多页面骨架 + 界面美化
+
+### 页面跳转(相对路径)
+```html
+<nav>
+  <a href="index.html">主页</a>
+  <a href="skills.html">技能</a>
+  <a href="projects.html">项目</a>
+  <a href="contact.html">联系我</a>
+</nav>
+```
+- 4 个页面放同一文件夹,`href="skills.html"` 相对路径互相跳
+- `<nav>` = 导航区语义标签;当前页用 `class="active"` 高亮
+
+### hover 悬停效果
+```css
+a:hover { color: red; }
+button:hover { background-color: lightblue; }
+```
+- `:hover` = 鼠标停上去时的状态,一行 CSS 就让元素"有反应"
+
+### 界面美化三件套(所有"高级感"的来源)
+```css
+.card   { border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px; }
+button  { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 20px; }
+.avatar { border-radius: 50%; }
+```
+1. **border**:细浅灰边框 → 元素从背景"浮"出来
+2. **border-radius**:圆角 → 越圆越柔和;`50%` 变正圆(头像)
+3. **padding**:内边距/留白 → 越透气越高级
+
+### "低调的装逼"设计(8-27 定风格)
+- 不喊口号,用数字说话(首页一排统计:`3` Kaggle / `0.97082` AUC / `3` LeetCode / `L1-L7` CS50)
+- 克制配色:白底 + 浅灰 + 一个蓝主色
+- 不用 emoji
+
+### 主题切换按钮(JS)
+```html
+<button onclick="document.body.style.backgroundColor = '#111827'; document.body.style.color = '#e5e7eb'">深色</button>
+```
+- 一行 JS 直接改 body 背景色/文字色
+- 多个动作用分号隔开
+
+### 今日 Homepage 文件(桌面)
+- index.html / skills.html / projects.html / contact.html(4 页互通)
+- 风格:简约高级,白底 + 蓝主色
+- 待办:填内容、加交互、传 GitHub Pages

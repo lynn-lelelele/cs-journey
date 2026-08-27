@@ -287,7 +287,7 @@ button  { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 20px; }
 2. **border-radius**:圆角 → 越圆越柔和;`50%` 变正圆(头像)
 3. **padding**:内边距/留白 → 越透气越高级
 
-### "低调的装逼"设计(8-27 定风格)
+### 页面风格设计(8-27 定稿：克制展示)
 - 不喊口号,用数字说话(首页一排统计:`3` Kaggle / `0.97082` AUC / `3` LeetCode / `L1-L7` CS50)
 - 克制配色:白底 + 浅灰 + 一个蓝主色
 - 不用 emoji

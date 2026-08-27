@@ -303,3 +303,19 @@ button  { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 20px; }
 - index.html / skills.html / projects.html / contact.html(4 页互通)
 - 风格:简约高级,白底 + 蓝主色
 - 待办:填内容、加交互、传 GitHub Pages
+
+
+---
+
+## 10. 🏁 L8 收工：Homepage 达标检查单（2026-08-27）
+
+| CS50 要求 | 实现 |
+|---|---|
+| ≥4 个页面 | index / skills / projects / contact |
+| 每页 ≥1 链接 | 导航栏（`<nav>` + `<a href>`） |
+| 每页 ≥1 列表 | 技能 / 工具 / 进行中 / 状态（`<ul><li>`） |
+| 每页 ≥3 种 CSS 属性 | 白底 + 主色 + 卡片 |
+| ≥1 页有图片 | index 头像（`border-radius: 50%` 圆形） |
+| ≥1 页有按钮 + JS | 主题切换按钮（onclick 改背景色） |
+
+**L8 完成！** 下一站：L9 Flask（Python 后端）。

@@ -160,3 +160,47 @@
 - [ ] L8 继续：JavaScript 进阶（function、if/else）+ 完成 Homepage 完整版
 - [ ] L9 Flask（Python 做后端）
 - [ ] 上传到 GitHub Pages 让别人能访问
+
+
+---
+
+## 7. JS 进阶：function + if/else（一个按钮来回切换）
+
+### 升级思路
+- 内联一堆代码 → 太乱
+- 打包成函数 → 起个名字，按钮一行调用
+
+### 代码（Lynn 亲手写的切换按钮）
+
+```html
+<button onclick="toggle()">点我变黑/白</button>
+
+<script>
+  function toggle() {
+    if (document.body.style.backgroundColor == 'black') {
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+    } else {
+      document.body.style.backgroundColor = 'black';
+      document.body.style.color = 'white';
+    }
+  }
+</script>
+```
+
+### 语法要点
+- `<script>` = JS 代码的家（放 `<body>` 末尾）
+- `function 名字() { ... }` = 定义函数（和 C 的 `void 名字(void)` 一个概念）
+- `onclick="toggle()"` = 点击时调用函数，括号 `()` 表示"执行它"
+- `if (条件) { ... } else { ... }` = 判断，和 C 完全一样
+- `==` 是"等于"（比较），`=` 是赋值，别混
+
+### 逻辑
+点一下 → 看当前背景是不是黑色 → 是则切白天，否则切黑夜 → 来回切换
+
+### 与 C 的对照（Lin 的已有知识）
+| C | JS |
+|---|---|
+| `void toggle(void)` | `function toggle()` |
+| `if (x == 5) {...} else {...}` | 一样 |
+| 函数调用 `toggle();` | `toggle()` |

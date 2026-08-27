@@ -17,7 +17,8 @@ cs-journey/
 │   ├── lecture5-data-structures.md← L5 数据结构
 │   ├── lecture6-python.md         ← L6 Python × Kaggle
 │   ├── ml-basics-sklearn.md       ← ML 阶段1-2
-│   └── ml-s6e8-oof-stacking.md ← S6E8 0.97082（OOF 堆叠）
+│   ├── ml-s6e8-oof-stacking.md ← S6E8 0.97082（OOF 堆叠）
+│   └── lecture8-web-html-css-js.md ← L8 Web 入门
 ├── 2026-07/
 │   ├── 07-29-mario/      ← 双金字塔（for 嵌套）
 │   └── 07-31-cash/       ← 硬币找零（除法取余）

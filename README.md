@@ -18,7 +18,8 @@ cs-journey/
 │   ├── lecture6-python.md         ← L6 Python × Kaggle
 │   ├── ml-basics-sklearn.md       ← ML 阶段1-2
 │   ├── ml-s6e8-oof-stacking.md ← S6E8 0.97082（OOF 堆叠）
-│   └── lecture8-web-html-css-js.md ← L8 Web 入门
+│   ├── lecture8-web-html-css-js.md ← L8 Web 入门
+│   └── lecture9-flask.md            ← L9 Flask 后端
 ├── 2026-07/
 │   ├── 07-29-mario/      ← 双金字塔（for 嵌套）
 │   └── 07-31-cash/       ← 硬币找零（除法取余）
@@ -48,6 +49,7 @@ cs-journey/
 - [x] 2026.08.25 — S6E8 手机成瘾预测 **0.97082**（74 模型 OOF 堆叠）
 - [x] 2026.08.27 — L8 Web 入门（HTML 骨架 + CSS 化妆 + JS 按钮交互）✅ 第一个主页
 - [x] 2026.08.27 — **L8 Web 完成**（Homepage 4 页多页面站点，达标 PSet）✅
+- [x] 2026.08.28 — L9 Flask 启动（请求→响应原理 + 3 页网站 + 亲手加路由）+ Two Sum 哈希版 ✅
 - [ ] 继续中...
 
 ## CS50 路线图
@@ -62,7 +64,7 @@ cs-journey/
 | 6 | Python | PSet 6 | ✅ 学完 + 题做完 |
 | 7 | SQL | Songs / Movies | ✅ 学完 SQL |
 | 8 | Web (HTML/CSS/JS) | Homepage | ✅ 完成 |
-| 9 | Flask | Finance | ⬜ |
+| 9 | Flask | Finance | 🔧 进行中 |
 | 10 | 最终项目 | 自选题 | ⬜ |
 
 ## 机器学习路线（并行）

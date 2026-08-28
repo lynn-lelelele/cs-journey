@@ -85,3 +85,34 @@ def isPalindrome(x):
 3. 轮数 = `len(s) // 2`，奇偶都不用分开处理
 4. `return True` 要放在循环外面（全部比完才成立）
 5. 测试法：print 几个用例看输出（121→True, -121→False, 10→False）
+
+
+---
+
+## 第 4 题 · Two Sum 哈希表版（LeetCode 1 · Easy · 重做）
+
+> 日期：2026-08-28　｜　状态：✅ 跑通　｜　之前暴力解 O(n²) → 哈希解 O(n)
+
+### 思想（哈希表 = 记事本）
+一边走一边记"我来过，我的数字是 X，位置是 i"；每到一个新人，查"我缺的补数 target-n 在不在记事本里"。
+
+### 代码
+```python
+def two_sum(nums, target):
+    seen = {}                    # 记事本：数字 -> 位置
+    for i, n in enumerate(nums): # 一边走，拿编号 i 和数字 n
+        need = target - n        # 我缺的补数
+        if need in seen:         # 补数在记事本里吗？
+            return [seen[need], i]   # 在！返回两个位置
+        seen[n] = i              # 不在，把我登记进去
+    return []                    # 兜底
+```
+
+### 关键理解：seen[n] = i 在干嘛
+- = 在记事本登记："数字 n 出现在位置 i"
+- 和 Flask 的 `@app.route` 一个套路：查表！给钥匙，秒找值
+- 没有这行 → 记事本永远空 → 后面的人查不到 → 只能暴力找
+
+### 复杂度
+- 暴力解：O(n²)（两层循环）
+- 哈希解：O(n)（字典查找 O(1)）

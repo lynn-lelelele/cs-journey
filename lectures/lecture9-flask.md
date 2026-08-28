@@ -141,3 +141,95 @@ if __name__ == "__main__":
 
 - [ ] CS50 L9 完成：Finance 项目（表单、Session、数据库）
 - [ ] FastAPI 教程前 4 章（掌握 Flask 后学习更高效）
+
+
+---
+
+## 8. 表单(Form):让用户提交数据
+
+### HTML 表单
+
+```html
+<form action="/login" method="post">
+  <input type="text" name="name" placeholder="你的名字">
+  <button type="submit">提交</button>
+</form>
+```
+
+| 代码 | 功能 |
+|---|---|
+| `<form>` | 表单容器,圈住输入与按钮 |
+| `action="/login"` | 提交后数据发往的地址 |
+| `method="post"` | 发送方式:POST(提交数据) |
+| `input type="text"` | 文本框(用户输入) |
+| `name="name"` | 字段名,服务器据此取值 |
+| `placeholder` | 输入框内的灰色提示文字 |
+| `button type="submit"` | 提交按钮 |
+
+### GET 与 POST(记忆:GET = 拿,POST = 交)
+
+- GET:浏览器**拿**页面/数据(只读,如访问网页)。
+- POST:浏览器**交**数据(提交表单,数据放在请求体中)。
+
+### 接收数据
+
+```python
+@app.route("/hello", methods=["POST"])
+def hello():
+    name = request.form.get("name")   # 从表单数据中取字段
+    return f"你好, {name}!"
+```
+
+- `request` :本次请求对象(浏览器发来的一切)。
+- `request.form` :表单数据(类似字典)。
+- `.get("name")` :取出 name 字段的值。
+
+---
+
+## 9. Session(登录状态)[重点难点]
+
+> HTTP 是无状态的:服务器默认**不记得**上一次请求是谁。Session 用于在多次请求间记住用户身份。
+
+### 机制(一式两份)
+
+```
+登录 → 服务器存档案 {编号: 用户名} + 浏览器存 cookie(编号)
+访问 → 浏览器自动带 cookie → 服务器查档案 → 认出用户
+```
+
+- **服务器**:session 数据 + session_id。
+- **浏览器**:cookie(仅保存 session_id)。
+
+### 代码
+
+```python
+from flask import Flask, session
+app.secret_key = "任意密钥"          # cookie 加密密钥(必需)
+
+@app.route("/login", methods=["POST"])
+def login():
+    session["username"] = request.form.get("name")  # 写卡
+    return "登录成功!"
+
+@app.route("/profile")
+def profile():
+    name = session.get("username")   # 读卡
+    if name:
+        return f"欢迎回来, {name}!"
+    return "你还没登录"
+```
+
+### 为什么换浏览器就"失忆"
+
+- cookie(卡片)存在**浏览器软件**里,不在人/电脑上。
+- 换浏览器 / 清缓存 / 换电脑 → 卡片丢失 → 服务器查不到档案。
+
+> 类比:健身会员卡放在钱包里;换钱包(浏览器) = 卡没带 = 前台不认识。
+
+### 关键点
+
+| 操作 | 语法 | 含义 |
+|---|---|---|
+| 写 | `session["key"] = 值` | 记住 |
+| 读 | `session.get("key")` | 想起来 |
+| 依赖 | `app.secret_key` | cookie 加密,不设会报错 |

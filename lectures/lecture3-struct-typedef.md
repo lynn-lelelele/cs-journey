@@ -1,54 +1,88 @@
-﻿# CS50 Lecture 3 补充 · struct 与 typedef · 2026.08.04
+# CS50 Lecture 3 补充 · 结构体(struct)与类型别名(typedef) · 2026.08.04
 
-## struct = 把东西打包成"档案袋"
+> 适用读者：掌握基本数据类型与数组的初学者。
+> 学习目标：理解结构体的定义、字段访问，以及 typedef 的作用。
 
-以前一个变量只能装一个东西，struct 可以把多个东西打包：
+---
+
+## 一、结构体(struct)：复合数据类型
+
+基础变量一次只能保存一个值。**结构体(struct)** 将多个相关数据打包成一个复合类型。
 
 ```c
 struct
 {
- string name; // 袋子里有：名字
- int votes; // 袋子里还有：票数
+    string name;   // 字段：姓名
+    int votes;     // 字段：票数
 };
 ```
 
-## typedef = 给类型起名字
+> 比喻：结构体像"档案袋"，一个袋子里可以装多份材料（字段）。
+
+---
+
+## 二、typedef：类型别名
+
+`typedef` 为类型定义**别名**，简化声明。
 
 ```c
 typedef struct
 {
- string name;
- int votes;
+    string name;
+    int votes;
 }
-candidate; // 起名 candidate，以后像 int/string 一样用
+candidate;   // 以后 candidate 可像 int/string 一样使用
 ```
 
-## 怎么用
+> 本质：typedef 不创建新类型，只是给现有类型起一个更短的名字。
+
+---
+
+## 三、字段访问：点运算符(.)
 
 ```c
-candidate c; // 创建袋子 c
-c.name = "lynn"; // 点 . 访问字段
+candidate c;         // 声明结构体变量 c
+c.name = "lynn";     // 通过点运算符 . 访问字段
 c.votes = 0;
 
 printf("%s 有 %d 票\n", c.name, c.votes);
 ```
 
-## 数组 + struct（Plurality 场景）
+---
+
+## 四、结构体数组(Plurality 场景)
 
 ```c
-candidate candidates[3]; // 3 个候选人的袋子数组
+candidate candidates[3];          // 结构体数组
 candidates[0].name = "lynn";
 candidates[1].name = "mario";
 ```
 
-## 一句话总结
+每个元素是一个结构体，通过 `数组名[下标].字段` 访问。
 
-- struct = 打包（定义袋子里装啥）
-- typedef = 起名（用 candidate 代替一长串）
-- 点 . = 打开袋子拿东西（c.name）
+---
 
-## 容易混的点
+## 五、要点总结
 
-- struct 只定义类型，不创建变量
-- 定义完记得末尾分号 `};`
-- 访问用 `.` 不是 `->`（`->` 是指针用的，后面学到）
+| 语法 | 作用 |
+|---|---|
+| `struct { ... };` | 定义结构体（复合类型） |
+| `typedef ... 别名;` | 为类型起别名 |
+| `.` | 成员访问运算符（访问字段） |
+| `->` | 指针成员访问（后续指针章节学习） |
+
+容易混淆的点：
+- `struct` 只**定义类型**，不创建变量。
+- 定义结束需写分号 `};`。
+- 访问字段用 `.`；`->` 用于指针，后续学习。
+
+---
+
+## 术语表
+
+| 术语 | 含义 |
+|---|---|
+| 结构体(struct) | 由多个字段组成的复合数据类型 |
+| 字段(Field) | 结构体中的成员变量 |
+| typedef | 类型别名关键字 |
+| 成员访问运算符 | 用于访问结构体字段的 `.` / `->` |

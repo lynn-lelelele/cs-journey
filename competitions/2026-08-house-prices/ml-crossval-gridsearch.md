@@ -1,6 +1,6 @@
-# 交叉验证 + GridSearchCV · 家教笔记 · 2026.08.21
+# 模型评估与调参 · 交叉验证 + GridSearchCV · 课堂笔记
 
-> 阶段 A：评估和调参的进阶工具 [完成]
+> 适用读者：理解 train_test_split，想提升模型评估可靠性的初学者。
 
 ## 交叉验证（Cross Validation）
 

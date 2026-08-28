@@ -1,6 +1,7 @@
-# House Prices · 阶段 3 完整笔记 · 2026.08.21
+# Kaggle 实战 · House Prices 房价预测 · 课堂笔记
 
-> Kaggle 房价预测（回归赛）· [完成] 全部完成
+> 适用读者：掌握 sklearn 基础流程的初学者。
+> 竞赛：Kaggle House Prices（回归任务，评价指标为 RMSE 对数）。
 
 ## 最终成绩：0.13462
 

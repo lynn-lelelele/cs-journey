@@ -1,8 +1,9 @@
-﻿# CS50 Lecture 6 · Python × Kaggle 结课笔记
+﻿# CS50 Lecture 6 · Python 与数据科学基础 · 课堂笔记
 
-> 2026.08.18-19 · 本地 Python 3.14 · [完成] L6 全部完成
+> 适用读者：已有 C 基础的初学者。
+> 学习目标：掌握 Python 语法、列表/字典，以及 pandas 与 numpy 的数据处理基础。
 
-## 已学清单
+## 学习内容总览
 
 1. Python vs C（print / f-string / 不写类型）
 2. 列表 list（[-1]、append、for 遍历）
@@ -13,7 +14,7 @@
 7. pandas 进阶：groupby 分组统计、缺失值处理
 8. numpy：数组运算（+1、*2）、mean/max/min、筛选
 
-## PSet 6 完成
+## 编程练习(PSet 6)
 
 ### Mario Python（3 行，C 版 30 行）
 
@@ -23,7 +24,7 @@ for i in range(n):
  print(" " * (n - i - 1) + "#" * (i + 1))
 ```
 
-新知识：`input()` 读输入、`int()` 转换、`range(n)` 循环、字符串乘法 `"#" * 3`、字符串拼接 `+`
+新知识：`input()` 读取输入、`int()` 类型转换、`range(n)` 生成序列、字符串乘法 `"#" * 3`、字符串拼接 `+`
 
 ### Cash Python（4 行，C 版 20 行）
 

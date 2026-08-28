@@ -1,11 +1,12 @@
-# CS50 Lecture 7 · SQL 入门 · 家教笔记
+# CS50 Lecture 7 · SQL 与数据库入门 · 课堂笔记
 
-> 2026.08.23-24 · L7 学习中
+> 适用读者：熟悉 pandas 数据处理的初学者。
+> 学习目标：理解关系型数据库与 SQL，掌握增删改查、聚合与多表连接(JOIN)。
 
-## 数据库是啥
+## 数据库基础概念
 
-- 数据库 = 专门存数据的"超级表格仓库"
-- SQL = 和数据库对话的语言
+- 数据库(Database)：按结构化方式存储数据的系统。
+- SQL：与关系型数据库交互的标准查询语言。
 
 ### 数据库 vs Excel
 
@@ -65,7 +66,7 @@ conn.commit() # 插入/改后保存（空括号！）
 conn.close() # 关闭
 ```
 
-## JOIN（连接两张表）[重点] 2026.08.24
+## 多表连接：JOIN
 
 ### 为什么需要
 
@@ -99,7 +100,7 @@ FROM students LEFT JOIN classes ON students.class_id = classes.id;
 - 左表（FROM 后面）每一行都出现
 - 右表没匹配的填 NULL
 
-### [重点] 钥匙概念（最大的坑）
+### 连接键(Foreign Key)概念（关键）
 
 ```
 [完成] ON students.class_id = classes.id （学生的班级号 = 班级的编号）
@@ -116,7 +117,7 @@ FROM students LEFT JOIN classes ON students.class_id = classes.id;
 | 所有学生（含没班级的） | `FROM students LEFT JOIN classes` |
 | 所有班级（含没学生的） | `FROM classes LEFT JOIN students` |
 
-## 进度
+## 学习进度
 
 - [x] 数据库概念 + SQL vs pandas
 - [x] 基础 5 命令 + sqlite3

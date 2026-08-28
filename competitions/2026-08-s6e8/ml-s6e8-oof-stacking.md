@@ -1,7 +1,8 @@
 # ML 实战 3 · S6E8 手机成瘾预测 — 从 0.962 到 0.97082
 
-> 日期：2026-08-25 / 26　｜　比赛：Kaggle Playground S6E8 "Predicting Smartphone Addiction"
-> 最终成绩：**OOF 0.96966 → 公共榜 0.97082** [完成]（诚实堆叠，无 LB 试探）
+> 适用读者：理解交叉验证与基础集成概念的初学者。
+> 竞赛：Kaggle Playground S6E8（二分类，评价指标 AUC）。
+> 最终成绩：OOF 0.96966 → 公共榜 0.97082。
 
 ---
 

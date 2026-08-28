@@ -1,78 +1,80 @@
-﻿# CS Journey
+# CS Journey · 从零开始的计算机学习记录
 
-> 从零开始的学习记录。每道题、每个项目、每次踩坑。持续更新。
+> 一个面向**初学者**的公开学习仓库：CS50 系统课 + 机器学习 + Kaggle 实战 + LeetCode。
+> 所有笔记从零讲起，用生活化比喻降低门槛，同时保留专业术语，方便后续进阶。
 
-## 仓库结构
+## 📁 仓库结构
 
 ```
 cs-journey/
-├── README.md
-├── push.bat              ← 一键推送脚本
-├── notes/
-│   ├── c-header-files.md          ← C 头文件速查
-│   ├── lecture2-arrays.md         ← L2 数组
-│   ├── lecture3-algorithms.md     ← L3 算法
-│   ├── lecture3-struct-typedef.md ← struct/typedef
-│   ├── lecture4-memory.md         ← L4 内存/指针
-│   ├── lecture5-data-structures.md← L5 数据结构
-│   ├── lecture6-python.md         ← L6 Python × Kaggle
-│   ├── ml-basics-sklearn.md       ← ML 阶段1-2
-│   ├── ml-s6e8-oof-stacking.md ← S6E8 0.97082（OOF 堆叠）
-│   ├── lecture8-web-html-css-js.md ← L8 Web 入门
-│   └── lecture9-flask.md            ← L9 Flask 后端
-├── 2026-07/
-│   ├── 07-29-mario/      ← 双金字塔（for 嵌套）
-│   └── 07-31-cash/       ← 硬币找零（除法取余）
-├── 2026-08/
-│   ├── 08-02-readability/ ← 阅读难度（字符串+float）
-│   ├── 08-03-caesar/     ← 凯撒密码（argc/argv）
-│   ├── 08-04-plurality/  ← 投票机（struct+strcmp）✅ check50 满分
-│   ├── 08-11-filter/     ← 图片滤镜（指针/二维数组）
-│   └── 08-19-python-ml/  ← Python × 机器学习代码
+├── lectures/          ← 课堂笔记（CS50 L2-L9，按课程顺序）
+├── psets/             ← 课后作业（CS50 编程题，按时间）
+├── competitions/      ← 比赛成果（Kaggle，按时间）
+├── leetcode/          ← LeetCode 刷题笔记
+└── extras/            ← 工具技巧 / 学习指南
 ```
 
-每个文件夹里有一个 `README.md` 记录：学到了什么、踩了什么坑、下次怎么改进。
+### lectures/ 课堂笔记
+| 文件 | 内容 |
+|---|---|
+| lecture2-arrays.md | 数组、字符串、命令行参数 |
+| lecture3-algorithms.md | 搜索、排序、算法复杂度 |
+| lecture3-struct-typedef.md | struct、typedef、自定义类型 |
+| lecture4-memory.md | 内存、指针、malloc |
+| lecture5-data-structures.md | 链表、栈、队列、哈希表 |
+| lecture6-python.md | Python 语法与基础 |
+| lecture7-sql.md | SQL、数据库、JOIN |
+| lecture8-web-html-css-js.md | Web 前端：HTML/CSS/JS |
+| lecture9-flask.md | Web 后端：Flask（请求-响应模型） |
+| c-header-files.md | C 头文件速查 |
 
-## 进度
+### psets/ 课后作业（按时间）
+- 2026-07-mario / 2026-07-cash —— C 基础
+- 2026-08-readability / caesar —— 数组与字符串
+- 2026-08-plurality —— 结构体与算法
+- 2026-08-filter —— 内存与指针
+- 2026-08-python-ml —— Python 版练习
 
-- [x] 2026.07.29 — Mario 金字塔（for 循环嵌套）
-- [x] 2026.07.31 — Cash 找零（除法 + 取余）
-- [x] 2026.08.02 — Readability 阅读难度（字符串遍历、isalpha、float 转换）
-- [x] 2026.08.03 — Caesar 凯撒密码（argc/argv、atoi、ASCII、% 循环移位）
-- [x] 2026.08.04 — Plurality 投票机（struct、strcmp、找最大值）✅ check50 满分
-- [x] 2026.08.11 — Filter 滤镜（grayscale/sepia/reflect/blur 思路）
-- [x] 2026.08.14 — L5 数据结构（链表/栈/队列/哈希表）
-- [x] 2026.08.18 — L6 Python（语法 + pandas + numpy）
-- [x] 2026.08.19 — PSet 6 Python（Mario/Cash）
-- [x] 2026.08.19 — ML 入门（sklearn 五步 + 决策树）✅ Titanic 79.3%
-- [x] 2026.08.24 — L7 SQL（JOIN / LEFT JOIN）+ LeetCode Two Sum
-- [x] 2026.08.25 — S6E8 手机成瘾预测 **0.97082**（74 模型 OOF 堆叠）
-- [x] 2026.08.27 — L8 Web 入门（HTML 骨架 + CSS 化妆 + JS 按钮交互）✅ 第一个主页
-- [x] 2026.08.27 — **L8 Web 完成**（Homepage 4 页多页面站点，达标 PSet）✅
-- [x] 2026.08.28 — L9 Flask 启动（请求→响应原理 + 3 页网站 + 亲手加路由）+ Two Sum 哈希版 ✅
-- [ ] 继续中...
+### competitions/ 比赛成果（按时间）
+- 2026-08-titanic —— 入门第一场（准确率 79.3%）
+- 2026-08-house-prices —— 房价预测（0.13462）
+- 2026-08-s6e8 —— 手机成瘾预测（AUC 0.97082，OOF 堆叠）
 
-## CS50 路线图
+## 🗺 学习路线图
 
-| Week | 主题 | PSet | 状态 |
-|------|------|------|------|
-| 1 | C 语言基础 | Mario / Cash | ✅ |
-| 2 | 数组 | Readability / Caesar | ✅ 完成 |
-| 3 | 算法 | Plurality / Runoff | 🔧 Plurality 满分 |
-| 4 | 内存 & 指针 | Filter / Recover | 🔧 Filter 思路学完 |
-| 5 | 数据结构 | Speller | ✅ 课学完 |
-| 6 | Python | PSet 6 | ✅ 学完 + 题做完 |
-| 7 | SQL | Songs / Movies | ✅ 学完 SQL |
-| 8 | Web (HTML/CSS/JS) | Homepage | ✅ 完成 |
-| 9 | Flask | Finance | 🔧 进行中 |
-| 10 | 最终项目 | 自选题 | ⬜ |
+### CS50（计算机科学导论）
+| Week | 主题 | 状态 |
+|---|---|---|
+| 1 | C 语言基础 | ✅ |
+| 2 | 数组 | ✅ |
+| 3 | 算法 | ✅ |
+| 4 | 内存 & 指针 | ✅ |
+| 5 | 数据结构 | ✅ |
+| 6 | Python | ✅ |
+| 7 | SQL | ✅ |
+| 8 | Web 前端 | ✅ |
+| 9 | Flask 后端 | 🔧 进行中 |
+| 10 | 最终项目 | ⬜ |
 
-## 机器学习路线（并行）
+### 机器学习
+- sklearn 五步流程 ✅
+- 交叉验证 / GridSearchCV ✅
+- OOF 堆叠 + 集成原理 ✅
 
-```
-阶段1-2 ✅ sklearn 五步 + 决策树 + 训练/测试（Titanic 79.3%）
-阶段3 ⬜ House Prices（回归 + 特征工程）
-阶段4 ⬜ 随机森林调参 + 独立打比赛
-```
+### Kaggle 实战
+- Titanic 79.3% ✅
+- House Prices 0.13462 ✅
+- S6E8 0.97082 ✅
 
-> 按自己的节奏来，不赶进度，搞懂每一行代码。
+### LeetCode（进行中）
+- Two Sum（暴力解 + 哈希表）✅
+- Running Sum ✅
+- Palindrome Number ✅
+
+## 🚀 下一步
+- CS50 L9 Flask 完成（Finance 项目）
+- LeetCode 每周 3-5 题
+- 12 月端到端 ML 项目
+
+---
+*记录从 2026 年 7 月开始，持续更新。*

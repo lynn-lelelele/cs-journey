@@ -16,48 +16,48 @@
 
 ## 逐个详解
 
-### stdio.h — 输入输出 ⭐⭐⭐
+### stdio.h — 输入输出 [重要度:高]
 ```c
-printf("你好%d\n", n);   // 打印
-scanf("%d", &n);         // 读整数
+printf("你好%d\n", n); // 打印
+scanf("%d", &n); // 读整数
 ```
 
-### cs50.h — CS50 专用 ⭐⭐⭐
+### cs50.h — CS50 专用 [重要度:高]
 ```c
 string s = get_string("名字: ");
 int n = get_int("数字: ");
 ```
 
-### string.h — 字符串 ⭐⭐⭐
+### string.h — 字符串 [重要度:高]
 ```c
-strlen(s);         // 长度
-strcmp(a, b);      // 比较，==0 表示一样
-strcpy(dst, src);  // 复制
-strcat(dst, src);  // 拼接
+strlen(s); // 长度
+strcmp(a, b); // 比较，==0 表示一样
+strcpy(dst, src); // 复制
+strcat(dst, src); // 拼接
 ```
 
-### ctype.h — 字符判断 ⭐⭐
+### ctype.h — 字符判断 [重要度:中]
 ```c
-isalpha(c);   // 字母？
-isdigit(c);   // 数字？
-islower(c);   // 小写？
-isupper(c);   // 大写？
-toupper(c);   // 转大写
-tolower(c);   // 转小写
+isalpha(c); // 字母？
+isdigit(c); // 数字？
+islower(c); // 小写？
+isupper(c); // 大写？
+toupper(c); // 转大写
+tolower(c); // 转小写
 ```
 
-### stdlib.h — 通用工具 ⭐⭐
+### stdlib.h — 通用工具 [重要度:中]
 ```c
-atoi("123");   // 字符串 → 整数
-malloc(n);     // 申请内存
-free(p);       // 释放内存
+atoi("123"); // 字符串 → 整数
+malloc(n); // 申请内存
+free(p); // 释放内存
 ```
 
-### math.h — 数学 ⭐
+### math.h — 数学 [重点]
 ```c
-round(2.6);    // 四舍五入 → 3
-sqrt(16);      // 开根号 → 4
-pow(2, 3);     // 2³ → 8
+round(2.6); // 四舍五入 → 3
+sqrt(16); // 开根号 → 4
+pow(2, 3); // 2³ → 8
 ```
 
 ### stdbool.h — 布尔

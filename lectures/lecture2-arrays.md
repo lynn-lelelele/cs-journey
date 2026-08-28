@@ -19,9 +19,9 @@ int main(int argc, string argv[])
 ### argc = 参数个数
 
 ```
-./caesar 3        → argc = 2
-./caesar          → argc = 1
-./caesar 3 hello  → argc = 3
+./caesar 3 → argc = 2
+./caesar → argc = 1
+./caesar 3 hello → argc = 3
 ```
 
 规律：**argc = 空格分隔的词的数量**。程序名本身算一个。
@@ -29,9 +29,9 @@ int main(int argc, string argv[])
 ### argv = 参数数组
 
 ```
-argv[0] = "./caesar"   ← 永远是程序名
-argv[1] = "3"          ← 第一个参数
-argv[2] = "hello"      ← 第二个参数
+argv[0] = "./caesar" ← 永远是程序名
+argv[1] = "3" ← 第一个参数
+argv[2] = "hello" ← 第二个参数
 ```
 
 注意：**argv[1] 是字符串，不是数字！** `"3"` ≠ `3`
@@ -41,8 +41,8 @@ argv[2] = "hello"      ← 第二个参数
 ```c
 if (argc != 2)
 {
-    printf("Usage: ./caesar key\n");
-    return 1;   // 1 表示出错了
+ printf("Usage: ./caesar key\n");
+ return 1; // 1 表示出错了
 }
 ```
 
@@ -51,9 +51,9 @@ if (argc != 2)
 `argv[1]` 是字符串 `"3"`，不能直接做加减。用 `atoi()` 转换：
 
 ```c
-#include <stdlib.h>   // atoi 在这里
+#include <stdlib.h> // atoi 在这里
 
-int key = atoi(argv[1]);   // "3" → 3
+int key = atoi(argv[1]); // "3" → 3
 ```
 
 `atoi` = **A**SCII **to** **I**nteger
@@ -63,20 +63,20 @@ int key = atoi(argv[1]);   // "3" → 3
 计算机里所有字符本质都是数字：
 
 ```
-'A' = 65    'B' = 66    ...    'Z' = 90
-'a' = 97    'b' = 98    ...    'z' = 122
-'0' = 48    '1' = 49    ...    '9' = 57
+'A' = 65 'B' = 66 ... 'Z' = 90
+'a' = 97 'b' = 98 ... 'z' = 122
+'0' = 48 '1' = 49 ... '9' = 57
 ```
 
 ### 字符可以当数字用
 
 ```c
 char c = 'A';
-int n = c;          // n = 65
+int n = c; // n = 65
 
-char d = 66;        // d = 'B'
+char d = 66; // d = 'B'
 
-char e = 'C' + 1;   // e = 'D'
+char e = 'C' + 1; // e = 'D'
 ```
 
 跟昨天学的 `isalpha()` 不一样，这里直接做加减法。
@@ -89,7 +89,7 @@ char e = 'C' + 1;   // e = 'D'
 
 ```
 A B C ... X Y Z A B C ...
-0 1 2     23 24 25
+0 1 2 23 24 25
 ```
 
 ### 步骤
@@ -130,13 +130,13 @@ Z → A，绕回来了。
 ### 非字母不管
 
 ```c
-if (isupper(s[i]))      // 大写
+if (isupper(s[i])) // 大写
 {
-    s[i] = (s[i] - 'A' + key) % 26 + 'A';
+ s[i] = (s[i] - 'A' + key) % 26 + 'A';
 }
 else if (islower(s[i])) // 小写
 {
-    s[i] = (s[i] - 'a' + key) % 26 + 'a';
+ s[i] = (s[i] - 'a' + key) % 26 + 'a';
 }
 // 其他的（空格、标点、数字）原样保留
 ```
@@ -144,8 +144,8 @@ else if (islower(s[i])) // 小写
 ### 新函数：isupper() 和 islower()
 
 ```c
-isupper('A') → true    isupper('a') → false
-islower('a') → true    islower('A') → false
+isupper('A') → true isupper('a') → false
+islower('a') → true islower('A') → false
 ```
 
 都在 `<ctype.h>` 里，跟 `isalpha()` 一个家。
@@ -154,18 +154,18 @@ islower('a') → true    islower('A') → false
 
 ```
 ./caesar 3
-      ↓
-检查 argc == 2？           ← 不是就报错
-      ↓
-atoi(argv[1]) 得到 key     ← 把 "3" 变成 3
-      ↓
-get_string 读入明文         ← 昨天学的
-      ↓
+ ↓
+检查 argc == 2？ ← 不是就报错
+ ↓
+atoi(argv[1]) 得到 key ← 把 "3" 变成 3
+ ↓
+get_string 读入明文 ← 昨天学的
+ ↓
 遍历每个字符：
-  - 大写 → 公式加密
-  - 小写 → 公式加密
-  - 其他 → 原样
-      ↓
+ - 大写 → 公式加密
+ - 小写 → 公式加密
+ - 其他 → 原样
+ ↓
 打印密文
 ```
 

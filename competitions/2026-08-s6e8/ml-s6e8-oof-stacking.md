@@ -1,7 +1,7 @@
 # ML 实战 3 · S6E8 手机成瘾预测 — 从 0.962 到 0.97082
 
 > 日期：2026-08-25 / 26　｜　比赛：Kaggle Playground S6E8 "Predicting Smartphone Addiction"
-> 最终成绩：**OOF 0.96966 → 公共榜 0.97082** ✅（诚实堆叠，无 LB 试探）
+> 最终成绩：**OOF 0.96966 → 公共榜 0.97082** [完成]（诚实堆叠，无 LB 试探）
 
 ---
 
@@ -58,7 +58,7 @@
  → 输出：最终预测
 ```
 
-**结果：OOF 0.96966 → 公共榜 0.97082** ✅（比 README 声称的 0.96943/0.97062 还高）
+**结果：OOF 0.96966 → 公共榜 0.97082** [完成]（比 README 声称的 0.96943/0.97062 还高）
 
 ---
 
@@ -70,10 +70,10 @@
 
 ```python
 skf = StratifiedKFold(5, shuffle=True, random_state=42)
-oof = np.zeros(len(train))          # 空箱子，装 69 万个预测
+oof = np.zeros(len(train)) # 空箱子，装 69 万个预测
 for tr_idx, va_idx in skf.split(X, y):
-    model.fit(X[tr_idx], y[tr_idx])            # 4/5 训练
-    oof[va_idx] = model.predict_proba(X[va_idx])[:, 1]  # 1/5 预测，存进箱子
+ model.fit(X[tr_idx], y[tr_idx]) # 4/5 训练
+ oof[va_idx] = model.predict_proba(X[va_idx])[:, 1] # 1/5 预测，存进箱子
 ```
 
 跑完 5 轮，**每一行都恰好当过 1 次"考生"**，留下的预测就是 OOF。
@@ -108,7 +108,7 @@ for tr_idx, va_idx in skf.split(X, y):
 
 ### 3.6 诚实分数 vs 过拟合公共榜（重要！）
 
-- 诚实方案：OOF ≈ 公共榜（差 0.001 以内），我们 0.96966 → 0.97082 ✅
+- 诚实方案：OOF ≈ 公共榜（差 0.001 以内），我们 0.96966 → 0.97082 [完成]
 - 公共榜 0.97110 以上：基本是**过拟合公共榜**（反复提交试探测试集噪声）
 - 证据：rayk 自己标题《Why Every S6E8 Notebook Above 0.97110 Overfits》；najiama 的提交文件叫 `20_No_OOF_Useless_Overfitting_submission.csv`
 - **真实能力不涨，换数据立刻现形** → 不学这种玩法
@@ -136,8 +136,8 @@ OL, TL = logit(np.clip(O, 1e-6, 1-1e-6)), logit(np.clip(T, 1e-6, 1-1e-6))
 skf = StratifiedKFold(5, shuffle=True, random_state=42)
 oof = np.zeros(len(y))
 for itr, iva in skf.split(OL, y):
-    oof[iva] = LogisticRegression(max_iter=3000).fit(OL[itr], y[itr]).predict_proba(OL[iva])[:, 1]
-print("blend OOF AUC:", roc_auc_score(y, oof))   # 0.96966
+ oof[iva] = LogisticRegression(max_iter=3000).fit(OL[itr], y[itr]).predict_proba(OL[iva])[:, 1]
+print("blend OOF AUC:", roc_auc_score(y, oof)) # 0.96966
 ```
 
 ---
@@ -156,8 +156,7 @@ print("blend OOF AUC:", roc_auc_score(y, oof))   # 0.96966
 
 - [ ] 学 rayk 的 transductive 信号（+0.0003，边际效益小，先放着）
 - [ ] 自己从零训一个能到 0.97 的模型（真正的能力）
-- [ ] 上传笔记到 GitHub ✅ 本次完成
-
+- [ ] 上传笔记到 GitHub [完成] 本次完成
 
 ---
 
@@ -175,8 +174,8 @@ print("blend OOF AUC:", roc_auc_score(y, oof))   # 0.96966
 1. **没偷看靠机制**:`fit(X[tr_idx], y[tr_idx])` 只吃训练索引,验证集的数据被索引挡住,不可能进模型
 2. **分层≠偷看**:看 y 的是切分器(只为了分组公平),不是模型;分层保证每折比例≈整体(70.9%)
 3. **相关度 > 强度**:集成赚的是"错得不一样"的钱;相关度=两个考官看法同步的程度;越不相关越互补
-   - 例:19 个 LGBM 相关 0.99+(复读机);lookup 相关 0.9869(全场最低)→ 单独加它最值钱
-   - 例:自己训的 7 个模型拼进 74 库 = 0 提升(和库里高度同步)
+ - 例:19 个 LGBM 相关 0.99+(复读机);lookup 相关 0.9869(全场最低)→ 单独加它最值钱
+ - 例:自己训的 7 个模型拼进 74 库 = 0 提升(和库里高度同步)
 
 ### 为什么裁判用 logit + LR
 - 74 列高度相关(0.987~0.999),直接平均浪费信息

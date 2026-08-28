@@ -7,8 +7,8 @@
 ```c
 struct
 {
-    string name;   // 袋子里有：名字
-    int votes;     // 袋子里还有：票数
+ string name; // 袋子里有：名字
+ int votes; // 袋子里还有：票数
 };
 ```
 
@@ -17,17 +17,17 @@ struct
 ```c
 typedef struct
 {
-    string name;
-    int votes;
+ string name;
+ int votes;
 }
-candidate;   // 起名 candidate，以后像 int/string 一样用
+candidate; // 起名 candidate，以后像 int/string 一样用
 ```
 
 ## 怎么用
 
 ```c
-candidate c;        // 创建袋子 c
-c.name = "lynn";    // 点 . 访问字段
+candidate c; // 创建袋子 c
+c.name = "lynn"; // 点 . 访问字段
 c.votes = 0;
 
 printf("%s 有 %d 票\n", c.name, c.votes);
@@ -36,7 +36,7 @@ printf("%s 有 %d 票\n", c.name, c.votes);
 ## 数组 + struct（Plurality 场景）
 
 ```c
-candidate candidates[3];      // 3 个候选人的袋子数组
+candidate candidates[3]; // 3 个候选人的袋子数组
 candidates[0].name = "lynn";
 candidates[1].name = "mario";
 ```

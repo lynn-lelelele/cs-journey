@@ -1,8 +1,8 @@
 ﻿# CS50 Lecture 5 · 数据结构 · 家教课堂笔记
 
 > 2026.08.14-18 一对一辅导
-> ✅ 第1课：链表基础
-> ✅ 第2课：栈 Stack + 队列 Queue
+> [完成] 第1课：链表基础
+> [完成] 第2课：栈 Stack + 队列 Queue
 
 ---
 
@@ -25,7 +25,7 @@ struct box { int number; int *next; };
 
 ```c
 struct student *p = &s;
-p->name = "lynn";     // 等价于 (*p).name = "lynn"
+p->name = "lynn"; // 等价于 (*p).name = "lynn"
 ```
 口诀：结构体变量用 `.`，结构体指针用 `->`。
 
@@ -34,8 +34,8 @@ p->name = "lynn";     // 等价于 (*p).name = "lynn"
 ```c
 typedef struct node
 {
-    int number;          // 数据
-    struct node *next;   // 指向下一个节点
+ int number; // 数据
+ struct node *next; // 指向下一个节点
 }
 node;
 ```
@@ -46,10 +46,10 @@ node;
 ### 头插入（造 → 装 → 挂 → 换头）
 
 ```c
-node *n = malloc(sizeof(node));  // ① 造新车厢
-n->number = 7;                   // ② 装货
-n->next = head;                  // ③ 挂住原来第一名
-head = n;                        // ④ 名单更新
+node *n = malloc(sizeof(node)); // ① 造新车厢
+n->number = 7; // ② 装货
+n->next = head; // ③ 挂住原来第一名
+head = n; // ④ 名单更新
 ```
 
 顺序不能反：**先记住原来的第一名，再换头**。
@@ -69,8 +69,8 @@ head = n;                        // ④ 名单更新
 ```c
 typedef struct
 {
-    int values[100];   // 盘子架（100 层）
-    int top;           // 最上面的层号（初始 -1）
+ int values[100]; // 盘子架（100 层）
+ int top; // 最上面的层号（初始 -1）
 }
 stack;
 ```
@@ -78,15 +78,15 @@ stack;
 ### push（放盘子）
 
 ```c
-stack.top++;                    // 指示器升一层
-stack.values[stack.top] = 3;    // 放上去
+stack.top++; // 指示器升一层
+stack.values[stack.top] = 3; // 放上去
 ```
 
 ### pop（拿盘子）
 
 ```c
-int x = stack.values[stack.top];   // 拿最上面
-stack.top--;                       // 指示器降一层
+int x = stack.values[stack.top]; // 拿最上面
+stack.top--; // 指示器降一层
 ```
 
 ### 关键理解
@@ -99,8 +99,8 @@ stack.top--;                       // 指示器降一层
 
 ```
 push 1、2、3 → 栈 [1,2,3]，top=2
-pop 一次     → 拿 3，top=1
-pop 两次     → 拿 2、1，栈空
+pop 一次 → 拿 3，top=1
+pop 两次 → 拿 2、1，栈空
 ```
 
 ---
@@ -112,9 +112,9 @@ pop 两次     → 拿 2、1，栈空
 ```c
 typedef struct
 {
-    int values[100];   // 队伍位置
-    int front;         // 队头（先走的）
-    int rear;          // 队尾（新来的站这）
+ int values[100]; // 队伍位置
+ int front; // 队头（先走的）
+ int rear; // 队尾（新来的站这）
 }
 queue;
 ```
@@ -124,15 +124,15 @@ queue;
 ### enqueue（入队：站队尾）
 
 ```c
-queue.rear++;                    // 队尾往后挪
-queue.values[queue.rear] = 5;    // 新来的站最后
+queue.rear++; // 队尾往后挪
+queue.values[queue.rear] = 5; // 新来的站最后
 ```
 
 ### dequeue（出队：队头走）
 
 ```c
-int x = queue.values[queue.front];   // 队头的人拿走
-queue.front++;                       // 队头往后挪
+int x = queue.values[queue.front]; // 队头的人拿走
+queue.front++; // 队头往后挪
 ```
 
 ### 对比
@@ -160,7 +160,7 @@ queue.front++;                       // 队头往后挪
 ```c
 int hash(string s)
 {
-    return s[0] - 'a';   // 首字母 ASCII - 'a' = 0-25
+ return s[0] - 'a'; // 首字母 ASCII - 'a' = 0-25
 }
 ```
 
@@ -172,7 +172,7 @@ int hash(string s)
 两个名字首字母相同（lynn / lily）→ 同柜子 → 用链表串起来：
 
 ```c
-node *table[26];   // 26 个链表头
+node *table[26]; // 26 个链表头
 ```
 
 插入：hash 算编号 → 头插入对应链表

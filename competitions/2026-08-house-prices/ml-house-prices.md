@@ -1,6 +1,6 @@
 # House Prices · 阶段 3 完整笔记 · 2026.08.21
 
-> Kaggle 房价预测（回归赛）· ✅ 全部完成
+> Kaggle 房价预测（回归赛）· [完成] 全部完成
 
 ## 最终成绩：0.13462
 
@@ -24,9 +24,9 @@
 
 ```python
 for df in [X, test]:
-    df["TotalSF"] = df["1stFlrSF"] + df["2ndFlrSF"] + df["TotalBsmtSF"]
-    df["HouseAge"] = df["YrSold"] - df["YearBuilt"]
-    df["QualSF"] = df["OverallQual"] * df["TotalSF"]
+ df["TotalSF"] = df["1stFlrSF"] + df["2ndFlrSF"] + df["TotalBsmtSF"]
+ df["HouseAge"] = df["YrSold"] - df["YearBuilt"]
+ df["QualSF"] = df["OverallQual"] * df["TotalSF"]
 ```
 
 - 让模型自动学（浴室权重）比人工猜更好

@@ -2,7 +2,7 @@
 
 > 目标：每周 3-5 题，面试/进组打底
 
-## 第 1 题：Two Sum（两数之和）⭐ 面试必考
+## 第 1 题：Two Sum（两数之和）[重点] 面试必考
 
 ### 题面
 
@@ -17,11 +17,11 @@ nums = [2, 7, 11, 15], target = 9
 
 ```python
 def two_sum(nums, target):
-    for i in range(len(nums)):
-        for j in range(i + 1, len(nums)):
-            if nums[i] + nums[j] == target:
-                return [i, j]
-    return []    # 兜底：找不到返回空列表
+ for i in range(len(nums)):
+ for j in range(i + 1, len(nums)):
+ if nums[i] + nums[j] == target:
+ return [i, j]
+ return [] # 兜底：找不到返回空列表
 ```
 
 ### 关键点
@@ -32,7 +32,7 @@ def two_sum(nums, target):
 - 比较用 `==`（不是 `=`）
 - def/for/if 行尾都要冒号
 
-### 兜底（边界情况）⭐ 真实编程思维
+### 兜底（边界情况）[重点] 真实编程思维
 
 - LeetCode 题目保证有解，但不写兜底过测试也能过
 - 真实世界数据不可靠，**必须处理"找不到"的情况**
@@ -49,17 +49,16 @@ def two_sum(nums, target):
 - `=` 写成 `==`（比较）
 - 返回了值而不是下标（要用 range 遍历下标）
 
-
 ---
 
 ## 第 3 题 · 回文数（LeetCode 9 · Easy）
 
-> 日期：2026-08-27　｜　状态：✅ 提交通过
+> 日期：2026-08-27　｜　状态：[完成] 提交通过
 
 ### 题目
-判断整数是不是回文（正反读一样）：`121` ✅，`-121` ❌，`10` ❌
+判断整数是不是回文（正反读一样）：`121` [完成]，`-121` ❌，`10` ❌
 
-### 我的思路（Lynn 自己想的）
+### 解题思路
 - 负数直接不是回文
 - 转成字符串，第一位和最后一位比，以此类推
 - 只比一半：`len(s) // 2` 轮（奇数中间那个自动跳过，不用 n+1）
@@ -67,16 +66,16 @@ def two_sum(nums, target):
 ### 完整代码
 ```python
 def isPalindrome(x):
-    if x < 0:          # 负数带负号，不是回文
-        return False
+ if x < 0: # 负数带负号，不是回文
+ return False
 
-    s = str(x)         # 数字转字符串：121 -> "121"
+ s = str(x) # 数字转字符串：121 -> "121"
 
-    for i in range(len(s) // 2):   # 只比一半轮
-        if s[i] != s[-i - 1]:      # 左数第i个 vs 右数第i+1个
-            return False
+ for i in range(len(s) // 2): # 只比一半轮
+ if s[i] != s[-i - 1]: # 左数第i个 vs 右数第i+1个
+ return False
 
-    return True        # 全部相等才是回文
+ return True # 全部相等才是回文
 ```
 
 ### 踩坑 / 学会的点
@@ -86,12 +85,11 @@ def isPalindrome(x):
 4. `return True` 要放在循环外面（全部比完才成立）
 5. 测试法：print 几个用例看输出（121→True, -121→False, 10→False）
 
-
 ---
 
 ## 第 4 题 · Two Sum 哈希表版（LeetCode 1 · Easy · 重做）
 
-> 日期：2026-08-28　｜　状态：✅ 跑通　｜　之前暴力解 O(n²) → 哈希解 O(n)
+> 日期：2026-08-28　｜　状态：[完成] 跑通　｜　之前暴力解 O(n²) → 哈希解 O(n)
 
 ### 思想（哈希表 = 记事本）
 一边走一边记"我来过，我的数字是 X，位置是 i"；每到一个新人，查"我缺的补数 target-n 在不在记事本里"。
@@ -99,13 +97,13 @@ def isPalindrome(x):
 ### 代码
 ```python
 def two_sum(nums, target):
-    seen = {}                    # 记事本：数字 -> 位置
-    for i, n in enumerate(nums): # 一边走，拿编号 i 和数字 n
-        need = target - n        # 我缺的补数
-        if need in seen:         # 补数在记事本里吗？
-            return [seen[need], i]   # 在！返回两个位置
-        seen[n] = i              # 不在，把我登记进去
-    return []                    # 兜底
+ seen = {} # 记事本：数字 -> 位置
+ for i, n in enumerate(nums): # 一边走，拿编号 i 和数字 n
+ need = target - n # 我缺的补数
+ if need in seen: # 补数在记事本里吗？
+ return [seen[need], i] # 在！返回两个位置
+ seen[n] = i # 不在，把我登记进去
+ return [] # 兜底
 ```
 
 ### 关键理解：seen[n] = i 在干嘛

@@ -28,19 +28,19 @@
 ### SQL 语法顺序（和 pandas 不同）
 
 ```sql
-SELECT 列   -- 先选列
-FROM 表     -- 从哪张表
-WHERE 条件  -- 再筛选
+SELECT 列 -- 先选列
+FROM 表 -- 从哪张表
+WHERE 条件 -- 再筛选
 ```
 
 ## SQL 基础命令（5 个，已掌握）
 
 ```sql
-CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, score REAL);  -- 建表
+CREATE TABLE students (id INTEGER, name TEXT, age INTEGER, score REAL); -- 建表
 INSERT INTO students (id, name, age, score) VALUES (1, 'Alice', 20, 88.5); -- 插入
-SELECT name, score FROM students WHERE age < 20;   -- 查 + 筛
-SELECT name, score FROM students ORDER BY score DESC;  -- 排序（DESC降序 ASC升序）
-SELECT COUNT(*), AVG(score) FROM students;          -- 统计
+SELECT name, score FROM students WHERE age < 20; -- 查 + 筛
+SELECT name, score FROM students ORDER BY score DESC; -- 排序（DESC降序 ASC升序）
+SELECT COUNT(*), AVG(score) FROM students; -- 统计
 SELECT class, AVG(score) FROM scores GROUP BY class; -- 分组
 ```
 
@@ -57,25 +57,25 @@ SELECT class, AVG(score) FROM scores GROUP BY class; -- 分组
 
 ```python
 import sqlite3
-conn = sqlite3.connect("test.db")   # 连接（没有自动创建）
-cursor = conn.cursor()              # 拿执行器
-cursor.execute("SQL语句")           # 执行
-rows = cursor.fetchall()            # 查询拿结果
-conn.commit()                       # 插入/改后保存（空括号！）
-conn.close()                        # 关闭
+conn = sqlite3.connect("test.db") # 连接（没有自动创建）
+cursor = conn.cursor() # 拿执行器
+cursor.execute("SQL语句") # 执行
+rows = cursor.fetchall() # 查询拿结果
+conn.commit() # 插入/改后保存（空括号！）
+conn.close() # 关闭
 ```
 
-## JOIN（连接两张表）⭐ 2026.08.24
+## JOIN（连接两张表）[重点] 2026.08.24
 
 ### 为什么需要
 
 数据分散在多张表，要按"钥匙"拼起来：
 
 ```
-students：                          classes：
-  id  name  class_id                 id  class_name
-  1   Alice  1                       1   A班
-  2   Bob    2                       2   B班
+students： classes：
+ id name class_id id class_name
+ 1 Alice 1 1 A班
+ 2 Bob 2 2 B班
 ```
 
 ### 基本语法（内连接）
@@ -99,11 +99,11 @@ FROM students LEFT JOIN classes ON students.class_id = classes.id;
 - 左表（FROM 后面）每一行都出现
 - 右表没匹配的填 NULL
 
-### ⭐ 钥匙概念（最大的坑）
+### [重点] 钥匙概念（最大的坑）
 
 ```
-✅ ON students.class_id = classes.id   （学生的班级号 = 班级的编号）
-❌ ON students.id = classes.id         （学生号 ≠ 班级号，碰巧而已）
+[完成] ON students.class_id = classes.id （学生的班级号 = 班级的编号）
+❌ ON students.id = classes.id （学生号 ≠ 班级号，碰巧而已）
 ```
 
 - 学生 id（学号）和班级 id（班号）是两个不同的东西

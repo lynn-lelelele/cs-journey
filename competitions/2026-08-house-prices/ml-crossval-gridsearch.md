@@ -1,6 +1,6 @@
 # 交叉验证 + GridSearchCV · 家教笔记 · 2026.08.21
 
-> 阶段 A：评估和调参的进阶工具 ✅
+> 阶段 A：评估和调参的进阶工具 [完成]
 
 ## 交叉验证（Cross Validation）
 
@@ -12,8 +12,8 @@ train_test_split 只考一次试 → 分数可能虚高/虚低。
 
 数据切 5 份，轮流当考试：
 ```
-第1轮：训练[2345] 考[1]   第4轮：训练[1235] 考[4]
-第2轮：训练[1345] 考[2]   第5轮：训练[1234] 考[5]
+第1轮：训练[2345] 考[1] 第4轮：训练[1235] 考[4]
+第2轮：训练[1345] 考[2] 第5轮：训练[1234] 考[5]
 第3轮：训练[1245] 考[3]
 ```
 
@@ -25,7 +25,7 @@ train_test_split 只考一次试 → 分数可能虚高/虚低。
 from sklearn.model_selection import cross_val_score
 
 scores = cross_val_score(model, X_all, y, cv=5,
-                         scoring="neg_mean_squared_error")
+ scoring="neg_mean_squared_error")
 log_rmse = np.sqrt(-scores.mean())
 ```
 
@@ -53,17 +53,17 @@ param_grid = {"n_estimators": [100, 300], "max_depth": [None, 10]}
 from sklearn.model_selection import GridSearchCV
 
 param_grid = {
-    "n_estimators": [100, 300, 500],
-    "max_depth": [None, 10, 15]
+ "n_estimators": [100, 300, 500],
+ "max_depth": [None, 10, 15]
 }
 
 search = GridSearchCV(RandomForestRegressor(random_state=42),
-                      param_grid, cv=5, scoring="neg_mean_squared_error")
+ param_grid, cv=5, scoring="neg_mean_squared_error")
 search.fit(X_all, y)
 
-print(search.best_params_)        # 最优参数组合
-print(search.best_score_)         # 最优分数
-best_model = search.best_estimator_  # 最优模型，直接用
+print(search.best_params_) # 最优参数组合
+print(search.best_score_) # 最优分数
+best_model = search.best_estimator_ # 最优模型，直接用
 pred = best_model.predict(test_final)
 ```
 

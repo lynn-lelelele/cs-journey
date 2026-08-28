@@ -1,6 +1,6 @@
 ﻿# CS50 Lecture 6 · Python × Kaggle 结课笔记
 
-> 2026.08.18-19 · 本地 Python 3.14 · ✅ L6 全部完成
+> 2026.08.18-19 · 本地 Python 3.14 · [完成] L6 全部完成
 
 ## 已学清单
 
@@ -20,7 +20,7 @@
 ```python
 n = int(input("Height: "))
 for i in range(n):
-    print(" " * (n - i - 1) + "#" * (i + 1))
+ print(" " * (n - i - 1) + "#" * (i + 1))
 ```
 
 新知识：`input()` 读输入、`int()` 转换、`range(n)` 循环、字符串乘法 `"#" * 3`、字符串拼接 `+`
@@ -31,8 +31,8 @@ for i in range(n):
 c = int(input("Change owed: "))
 coins = 0
 for denom in [25, 10, 5, 1]:
-    coins += c // denom
-    c %= denom
+ coins += c // denom
+ c %= denom
 print(coins)
 ```
 
@@ -53,14 +53,14 @@ print(coins)
 ## pandas 速查
 
 ```python
-df["列"]                         # 选一列
-df[["列1","列2"]]                # 选多列（双括号）
-df[df["列"] >= 8]                # 筛选
-df.head(2)                       # 前几行
-df["列"].value_counts()          # 统计
-df.sort_values("列", ascending=False)  # 排序
-df.groupby("列")["列"].mean()    # 分组平均
-df.isnull().sum()                # 找缺失
+df["列"] # 选一列
+df[["列1","列2"]] # 选多列（双括号）
+df[df["列"] >= 8] # 筛选
+df.head(2) # 前几行
+df["列"].value_counts() # 统计
+df.sort_values("列", ascending=False) # 排序
+df.groupby("列")["列"].mean() # 分组平均
+df.isnull().sum() # 找缺失
 df["列"].fillna(df["列"].mean()) # 填缺失
 ```
 
@@ -70,8 +70,8 @@ df["列"].fillna(df["列"].mean()) # 填缺失
 import numpy as np
 arr = np.array([1, 2, 3])
 arr.mean() / arr.max() / arr.min()
-arr + 1        # 每个 +1
-arr[arr >= 8]  # 筛选
+arr + 1 # 每个 +1
+arr[arr >= 8] # 筛选
 ```
 
 ## 下一步

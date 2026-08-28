@@ -19,8 +19,8 @@
 ### 开标签 / 闭标签 / 内容
 
 ```
-<h1>  你好,我是 Lin  </h1>
-开标签    内容      闭标签
+<h1>你好，我是 XXX</h1>
+开标签 内容 闭标签
 ```
 
 - 开标签 `<名字>`，闭标签 `</名字>`（名字前多一个 `/`，表示"到这里结束"）
@@ -32,14 +32,14 @@
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>我的第一个网页</title>
-  </head>
-  <body>
-    <h1>一级标题</h1>
-    <p>段落</p>
-    <a href="https://github.com/lynn-lelelele">链接</a>
-  </body>
+ <head>
+ <title>我的第一个网页</title>
+ </head>
+ <body>
+ <h1>一级标题</h1>
+ <p>段落</p>
+ <a href="https://github.com/lynn-lelelele">链接</a>
+ </body>
 </html>
 ```
 
@@ -50,7 +50,7 @@
 ### 属性（attribute）= 标签的"设置项"
 
 ```
-<标签名  属性名="值"> 内容 </标签名>
+<标签名 属性名="值"> 内容 </标签名>
 ```
 
 - `<a href="网址">` → href 是属性，告诉链接去哪
@@ -73,10 +73,10 @@
 
 ```html
 <style>
-  h1  { color: blue; }
-  p   { font-size: 25px; }
-  body { background-color: #00fff2; }
-  a   { color: #a3e4b0; }
+ h1 { color: blue; }
+ p { font-size: 25px; }
+ body { background-color: #00fff2; }
+ a { color: #a3e4b0; }
 </style>
 ```
 
@@ -120,27 +120,27 @@
 
 ---
 
-## 4. 今日成品（Lynn 写的第一个主页）
+## 4. 今日成品（示例：第一个主页）
 
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      h1 { color: blue; }
-      p  { font-size: 25px; }
-      body { background-color: #00fff2 }
-      a { color: #a3e4b0; }
-    </style>
-  </head>
-  <body>
-    <h1>lynn</h1>
-    <p>欢迎来到我的个人主页！</p>
-    <button onclick="document.body.style.backgroundColor = 'yellow'">点我变黄</button>
-    <button onclick="document.body.style.backgroundColor='white'; document.body.style.color='black'">白天模式</button>
-    <button onclick="document.body.style.backgroundColor='black'; document.body.style.color='white'">黑夜模式</button>
-    <a href="https://github.com/lynn-lelelele">我的 GitHub</a>
-  </body>
+ <head>
+ <style>
+ h1 { color: blue; }
+ p { font-size: 25px; }
+ body { background-color: #00fff2 }
+ a { color: #a3e4b0; }
+ </style>
+ </head>
+ <body>
+ <h1>lynn</h1>
+ <p>欢迎来到我的个人主页！</p>
+ <button onclick="document.body.style.backgroundColor = 'yellow'">点我变黄</button>
+ <button onclick="document.body.style.backgroundColor='white'; document.body.style.color='black'">白天模式</button>
+ <button onclick="document.body.style.backgroundColor='black'; document.body.style.color='white'">黑夜模式</button>
+ <a href="https://github.com/lynn-lelelele">我的 GitHub</a>
+ </body>
 </html>
 ```
 
@@ -161,7 +161,6 @@
 - [ ] L9 Flask（Python 做后端）
 - [ ] 上传到 GitHub Pages 让别人能访问
 
-
 ---
 
 ## 7. JS 进阶：function + if/else（一个按钮来回切换）
@@ -170,21 +169,21 @@
 - 内联一堆代码 → 太乱
 - 打包成函数 → 起个名字，按钮一行调用
 
-### 代码（Lynn 亲手写的切换按钮）
+### 代码（示例：切换按钮）
 
 ```html
 <button onclick="toggle()">点我变黑/白</button>
 
 <script>
-  function toggle() {
-    if (document.body.style.backgroundColor == 'black') {
-      document.body.style.backgroundColor = 'white';
-      document.body.style.color = 'black';
-    } else {
-      document.body.style.backgroundColor = 'black';
-      document.body.style.color = 'white';
-    }
-  }
+ function toggle() {
+ if (document.body.style.backgroundColor == 'black') {
+ document.body.style.backgroundColor = 'white';
+ document.body.style.color = 'black';
+ } else {
+ document.body.style.backgroundColor = 'black';
+ document.body.style.color = 'white';
+ }
+ }
 </script>
 ```
 
@@ -198,13 +197,12 @@
 ### 逻辑
 点一下 → 看当前背景是不是黑色 → 是则切白天，否则切黑夜 → 来回切换
 
-### 与 C 的对照（Lin 的已有知识）
+### 与 C 的对照（基于读者已有知识）
 | C | JS |
 |---|---|
 | `void toggle(void)` | `function toggle()` |
 | `if (x == 5) {...} else {...}` | 一样 |
 | 函数调用 `toggle();` | `toggle()` |
-
 
 ---
 
@@ -214,9 +212,9 @@
 ```html
 <h2>我的技能</h2>
 <ul>
-  <li>C 语言</li>
-  <li>Python / pandas</li>
-  <li>机器学习</li>
+ <li>C 语言</li>
+ <li>Python / pandas</li>
+ <li>机器学习</li>
 </ul>
 ```
 - `<ul>` = 无序列表（unordered list）
@@ -224,18 +222,18 @@
 
 ### 图片 <img> 与两种路径
 ```html
-<img src="https://github.com/lynn-lelelele.png" width="150">  <!-- 网络地址：需要网络 -->
-<img src="avatar.png" width="150">                            <!-- 相对路径：找网页旁边的文件 -->
+<img src="https://github.com/lynn-lelelele.png" width="150"> <!-- 网络地址：需要网络 -->
+<img src="avatar.png" width="150"> <!-- 相对路径：找网页旁边的文件 -->
 ```
 - `src` = 图片来源，`width` = 宽度
 - **相对路径** `avatar.png`：浏览器去 index.html 所在文件夹找，不用网络，秒开
 
 ### class 选择器（给指定的元素化妆）
 ```html
-<h2 class="title">我的技能</h2>   <!-- ① 贴便签 -->
+<h2 class="title">我的技能</h2> <!-- ① 贴便签 -->
 ```
 ```css
-.title { color: purple; }          <!-- ② 按便签找 -->
+.title { color: purple; } <!-- ② 按便签找 -->
 ```
 - `h2 { }` 选所有 h2；`.title { }` 只选贴了 class="title" 的
 - 点号 `.` = "我要找贴了这个便签的"
@@ -253,7 +251,6 @@
 ### 今日完整成品
 （见桌面 index.html：青色背景 + 技能列表 + 本地头像 + 变黄按钮 + 白天/黑夜切换 + 紫色标题）
 
-
 ---
 
 ## 9. Homepage 多页面骨架 + 界面美化
@@ -261,10 +258,10 @@
 ### 页面跳转(相对路径)
 ```html
 <nav>
-  <a href="index.html">主页</a>
-  <a href="skills.html">技能</a>
-  <a href="projects.html">项目</a>
-  <a href="contact.html">联系我</a>
+ <a href="index.html">主页</a>
+ <a href="skills.html">技能</a>
+ <a href="projects.html">项目</a>
+ <a href="contact.html">联系我</a>
 </nav>
 ```
 - 4 个页面放同一文件夹,`href="skills.html"` 相对路径互相跳
@@ -279,8 +276,8 @@ button:hover { background-color: lightblue; }
 
 ### 界面美化三件套(所有"高级感"的来源)
 ```css
-.card   { border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px; }
-button  { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 20px; }
+.card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px; }
+button { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 20px; }
 .avatar { border-radius: 50%; }
 ```
 1. **border**:细浅灰边框 → 元素从背景"浮"出来
@@ -304,10 +301,9 @@ button  { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 20px; }
 - 风格:简约高级,白底 + 蓝主色
 - 待办:填内容、加交互、传 GitHub Pages
 
-
 ---
 
-## 10. 🏁 L8 收工：Homepage 达标检查单（2026-08-27）
+## 10. [收工] L8 收工：Homepage 达标检查单（2026-08-27）
 
 | CS50 要求 | 实现 |
 |---|---|

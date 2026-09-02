@@ -66,6 +66,9 @@ cs-journey/
 - House Prices 0.13462 ✅
 - S6E8 0.97082 ✅
 
+### 深度学习（吴恩达，进行中）
+- C1W2 逻辑回归:损失函数 / 梯度下降 / 反向传播 / batch 梯度下降 ✅
+
 ### LeetCode（进行中）
 - Two Sum（暴力解 + 哈希表）✅
 - Running Sum ✅

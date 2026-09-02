@@ -10,6 +10,7 @@ cs-journey/
 ├── lectures/          ← 课堂笔记（CS50 L2-L9，按课程顺序）
 ├── psets/             ← 课后作业（CS50 编程题，按时间）
 ├── competitions/      ← 比赛成果（Kaggle，按时间）
+├── deeplearning/      ← 深度学习（吴恩达课程）
 ├── leetcode/          ← LeetCode 刷题笔记
 └── extras/            ← 工具技巧 / 学习指南
 ```
